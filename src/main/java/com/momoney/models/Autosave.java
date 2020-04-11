@@ -115,6 +115,13 @@ public class Autosave {
 		this.autosaveLimit = autosaveLimit;
 	}
 
+	@Override
+	public String toString() {
+		return "Autosave [autosaveId=" + autosaveId + ", amount=" + amount + ", accountTo=" + accountTo
+				+ ", accountFrom=" + accountFrom + ", startDate=" + startDate + ", frequency=" + frequency + ", status="
+				+ status + ", autosaveLimit=" + autosaveLimit + "]";
+	}
+
 	public Autosave(Long autosaveId, @NotBlank @Positive Double amount, @NotBlank Account accountTo,
 			@NotBlank Account accountFrom, String startDate, @NotBlank String frequency, @NotBlank Boolean status,
 			@NotBlank @Positive Double autosaveLimit) {
@@ -133,7 +140,7 @@ public class Autosave {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	
 	
 }

@@ -37,6 +37,12 @@ public class SecurityQuestion {
 		this.securityQuestion = securityQuestion;
 	}
 
+	@Override
+	public String toString() {
+		return "SecurityQuestion [securityQuestionId=" + securityQuestionId + ", securityQuestion=" + securityQuestion
+				+ "]";
+	}
+
 	public SecurityQuestion(Long securityQuestionId, @NotBlank String securityQuestion) {
 		super();
 		this.securityQuestionId = securityQuestionId;
@@ -47,6 +53,7 @@ public class SecurityQuestion {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 }

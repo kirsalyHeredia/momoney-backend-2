@@ -100,6 +100,13 @@ public class Account {
 		this.autosave = autosave;
 	}
 
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", accountType=" + accountType + ", balance=" + balance
+				+ ", accountNumber=" + accountNumber + ", routingNumber=" + routingNumber + ", interestRate="
+				+ interestRate + ", autosave=" + autosave + "]";
+	}
+
 	public Account(Long accountId, @NotBlank String accountType, @NotBlank @Positive Double balance,
 			@NotBlank Long accountNumber, @NotBlank Long routingNumber, @NotBlank @Positive Double interestRate,
 			Autosave autosave) {
@@ -117,6 +124,7 @@ public class Account {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 }
