@@ -21,47 +21,12 @@ public class UserAccount {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "account_id")
-	private Long accountId;
+	private Account account;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	private Long userId;
+	private User user;
 
-	public Long getJoinId() {
-		return joinId;
-	}
-
-	public void setJoinId(Long joinId) {
-		this.joinId = joinId;
-	}
-
-	public Long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public UserAccount(Long joinId, Long accountId, Long userId) {
-		super();
-		this.joinId = joinId;
-		this.accountId = accountId;
-		this.userId = userId;
-	}
-
-	public UserAccount() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 }

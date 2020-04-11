@@ -33,62 +33,7 @@ public class Transaction {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "account_id")
-	private Long accountId;
-
-	public Long getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(Long transactionId) {
-		this.transactionId = transactionId;
-	}
-
-	public Double getTransactionAmount() {
-		return transactionAmount;
-	}
-
-	public void setTransactionAmount(Double transactionAmount) {
-		this.transactionAmount = transactionAmount;
-	}
-
-	public String getTransactionType() {
-		return transactionType;
-	}
-
-	public void setTransactionType(String transactionType) {
-		this.transactionType = transactionType;
-	}
-
-	public String getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public Long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
-	}
-
-	public Transaction(Long transactionId, @NotBlank Double transactionAmount, @NotBlank String transactionType,
-			String timestamp, Long accountId) {
-		super();
-		this.transactionId = transactionId;
-		this.transactionAmount = transactionAmount;
-		this.transactionType = transactionType;
-		this.timestamp = timestamp;
-		this.accountId = accountId;
-	}
-
-	public Transaction() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
+	private Account account;
 	
 }
+	
