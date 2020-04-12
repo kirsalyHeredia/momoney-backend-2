@@ -63,7 +63,7 @@ public class User {
 	
 	@NotBlank
 	@Column(name = "state")
-	private Integer state;
+	private String state;
 	
 	@NotBlank
 	@Column(name = "zip")
@@ -74,6 +74,12 @@ public class User {
 	@Size(min = 9, max = 9)
 	@Column(name = "SSN", unique = true)
 	private Integer SSN;
+	
+	@NotBlank
+	@Positive
+	@Size(min = 10, max = 10)
+	@Column(name = "phone_number", unique = true)
+	private Integer phoneNumber;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "security_question_id")
