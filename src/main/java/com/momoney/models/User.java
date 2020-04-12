@@ -63,6 +63,10 @@ public class User {
 	
 	@NotBlank
 	@Column(name = "state")
+	private Integer state;
+	
+	@NotBlank
+	@Column(name = "zip")
 	private Integer zip;
 	
 	@NotBlank
