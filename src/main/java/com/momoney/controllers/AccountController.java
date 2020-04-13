@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.momoney.models.Account;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.momoney.jview.DataView;
 import com.momoney.models.Transaction;
+import com.momoney.models.UserAccount;
 import com.momoney.repos.AccountRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,7 +27,8 @@ public class AccountController {
 	// retrieves all of the accounts associated with a single user
 	// based on their user-id.
 	@GetMapping("/{userId}/accounts")
-	public List<Account> findUserAccounts(@PathVariable(value="userId") Long userId){
+	@JsonView(DataView.AccountView.class)
+	public List<UserAccount> findUserAccounts(@PathVariable(value="userId") Long userId){
 		return accountRepo.findAllUserAccounts(userId);
 	}
 	
