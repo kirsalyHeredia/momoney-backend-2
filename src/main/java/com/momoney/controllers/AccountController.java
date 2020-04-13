@@ -24,7 +24,7 @@ public class AccountController {
 	
 	// retrieves all of the accounts associated with a single user
 	// based on their user-id.
-	@GetMapping("/{usedId}/accounts")
+	@GetMapping("/{userId}/accounts")
 	public List<Account> findUserAccounts(@PathVariable(value="userId") Long userId){
 		return accountRepo.findAllUserAccounts(userId);
 	}

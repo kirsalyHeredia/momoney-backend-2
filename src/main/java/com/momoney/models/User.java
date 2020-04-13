@@ -73,13 +73,13 @@ public class User {
 	@Positive
 	@Size(min = 9, max = 9)
 	@Column(name = "SSN", unique = true)
-	private Integer SSN;
+	private Long SSN;
 	
 	@NotBlank
 	@Positive
 	@Size(min = 10, max = 10)
 	@Column(name = "phone_number", unique = true)
-	private Integer phoneNumber;
+	private Long phoneNumber;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "security_question_id")
@@ -161,6 +161,14 @@ public class User {
 		this.city = city;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public Integer getZip() {
 		return zip;
 	}
@@ -169,12 +177,20 @@ public class User {
 		this.zip = zip;
 	}
 
-	public Integer getSSN() {
+	public Long getSSN() {
 		return SSN;
 	}
 
-	public void setSSN(Integer sSN) {
+	public void setSSN(Long sSN) {
 		SSN = sSN;
+	}
+
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public SecurityQuestion getSecurityQuestion() {
@@ -193,19 +209,12 @@ public class User {
 		this.securityAnswer = securityAnswer;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", fName=" + fName + ", lName=" + lName + ", dob=" + dob + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", streetAddress=" + streetAddress + ", city="
-				+ city + ", zip=" + zip + ", SSN=" + SSN + ", securityQuestion=" + securityQuestion
-				+ ", securityAnswer=" + securityAnswer + "]";
-	}
-
 	public User(Long userId, @NotBlank @Size(max = 40) String fName, @NotBlank @Size(max = 40) String lName,
 			@NotBlank @Positive String dob, @NotBlank @Email String email,
 			@NotBlank @Size(min = 8, max = 40) String username, @NotBlank @Size(min = 8) String password,
-			@NotBlank String streetAddress, @NotBlank String city, @NotBlank Integer zip,
-			@NotBlank @Positive @Size(min = 9, max = 9) Integer sSN, SecurityQuestion securityQuestion,
+			@NotBlank String streetAddress, @NotBlank String city, @NotBlank String state, @NotBlank Integer zip,
+			@NotBlank @Positive @Size(min = 9, max = 9) Long sSN,
+			@NotBlank @Positive @Size(min = 10, max = 10) Long phoneNumber, SecurityQuestion securityQuestion,
 			@NotBlank String securityAnswer) {
 		super();
 		this.userId = userId;
@@ -217,8 +226,10 @@ public class User {
 		this.password = password;
 		this.streetAddress = streetAddress;
 		this.city = city;
+		this.state = state;
 		this.zip = zip;
 		SSN = sSN;
+		this.phoneNumber = phoneNumber;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
 	}
@@ -228,6 +239,13 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", fName=" + fName + ", lName=" + lName + ", dob=" + dob + ", email=" + email
+				+ ", username=" + username + ", password=" + password + ", streetAddress=" + streetAddress + ", city="
+				+ city + ", state=" + state + ", zip=" + zip + ", SSN=" + SSN + ", phoneNumber=" + phoneNumber
+				+ ", securityQuestion=" + securityQuestion + ", securityAnswer=" + securityAnswer + "]";
+	}
+
 	
 }
