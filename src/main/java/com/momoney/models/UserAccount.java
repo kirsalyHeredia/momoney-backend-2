@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.momoney.jview.DataView;
+
 @Entity
 @Table(name = "user_accounts")
 public class UserAccount {
@@ -21,6 +24,7 @@ public class UserAccount {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "account_id")
+	@JsonView(DataView.AccountView.class)
 	private Account account;
 	
 	@ManyToOne(fetch=FetchType.LAZY)

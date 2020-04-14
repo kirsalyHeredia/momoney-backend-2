@@ -14,6 +14,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.momoney.jview.DataView;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -21,6 +24,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
+	@JsonView(DataView.AccountView.class)
 	private Long userId;
 	
 	@NotBlank

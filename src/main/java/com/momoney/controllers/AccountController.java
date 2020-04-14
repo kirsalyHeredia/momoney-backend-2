@@ -34,8 +34,9 @@ public class AccountController {
 	
 	// retrieves all of the transactions associated with a single
 	// account based on the acct-id.
-	@GetMapping("/account/{acctId}")
-	public List<Transaction> findAccountTransactions(@PathVariable(value="acctId") Long accountId){
+	@GetMapping("/account/{accountId}")
+	@JsonView(DataView.TransactionView.class)
+	public List<Transaction> findAccountTransactions(@PathVariable(value="accountId") Long accountId){
 		return accountRepo.findAllUserTransactions(accountId);
 	}
 }
