@@ -10,6 +10,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.momoney.jview.DataView;
+
 @Entity
 @Table(name = "accounts")
 public class Account {
@@ -17,15 +20,18 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "account_id")
+	@JsonView(DataView.AccountView.class)
 	private Long accountId;
 	
 	@NotBlank
 	@Column(name = "account_type")
+	@JsonView(DataView.AccountView.class)
 	private String accountType;
 	
 	@NotBlank
 	@Positive
 	@Column(name = "balance")
+	@JsonView(DataView.AccountView.class)
 	private Double balance;
 	
 	@NotBlank
