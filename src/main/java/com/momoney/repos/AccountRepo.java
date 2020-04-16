@@ -20,4 +20,6 @@ public interface AccountRepo extends JpaRepository<Account, Long> {
 	@Query("SELECT o FROM Transaction o WHERE o.account.accountId = :accountId")
 	List<Transaction> findAllUserTransactions(@Param("accountId") Long accountId);
 	
+	@Query("SELECT o FROM Account o WHERE o.accountId = :accountId")
+	Account findAccount(@Param("accountId") Long accountId);
 }
