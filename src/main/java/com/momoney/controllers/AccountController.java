@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.momoney.jview.DataView;
+import com.momoney.models.Account;
 import com.momoney.models.Transaction;
 import com.momoney.models.UserAccount;
 import com.momoney.repos.AccountRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/momoney")
+@RequestMapping("/momoney/accounts/")
 public class AccountController {
 
 	@Autowired
@@ -26,7 +27,7 @@ public class AccountController {
 	
 	// retrieves all of the accounts associated with a single user
 	// based on their user-id.
-	@GetMapping("/{userId}/accounts")
+	@GetMapping("all/{userId}")
 	@JsonView(DataView.AccountView.class)
 	public List<UserAccount> findUserAccounts(@PathVariable(value="userId") Long userId){
 		return accountRepo.findAllUserAccounts(userId);
@@ -34,9 +35,15 @@ public class AccountController {
 	
 	// retrieves all of the transactions associated with a single
 	// account based on the acct-id.
-	@GetMapping("/account/{accountId}")
+	@GetMapping("acct-transactions/{accountId}")
 	@JsonView(DataView.TransactionView.class)
 	public List<Transaction> findAccountTransactions(@PathVariable(value="accountId") Long accountId){
 		return accountRepo.findAllUserTransactions(accountId);
+	}
+	
+	// retrieves the details of an account based off an id
+	@GetMapping("acct-details/{accountId}")
+	public Account findAccountDetails(@PathVariable(value="accountId") Long accountId){
+		return accountRepo.findAccount(accountId);
 	}
 }
