@@ -36,6 +36,7 @@ public class Account {
 	
 	@NotBlank
 	@Column(name = "account_number", unique = true)
+	@JsonView(DataView.AccountView.class)
 	private Long accountNumber;
 	
 	@NotBlank
