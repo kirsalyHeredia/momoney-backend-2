@@ -11,28 +11,38 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.momoney.jview.DataView;
+
 @Entity
 @Table(name = "transactions")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Transaction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "transaction_id")
+	@JsonView(DataView.TransactionView.class)
 	private Long transactionId;
 	
 	@NotBlank
 	@Column(name = "transaction_amount")
+	@JsonView(DataView.TransactionView.class)
 	private Double transactionAmount;
 	
 	@NotBlank
 	@Column(name = "transaction_type")
+	@JsonView(DataView.TransactionView.class)
 	private String transactionType;
 	
 	@Column(name = "timestamp")
+	@JsonView(DataView.TransactionView.class)
 	private String timestamp;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "account_id")
+	
 	private Account account;
 
 	public Long getTransactionId() {
